@@ -24,7 +24,6 @@ App.propTypes = {
 
 const styles = theme => ({
   root: {
-    height: '100vh',
     backgroundColor: theme.palette.background.paper,
   },
   container: {

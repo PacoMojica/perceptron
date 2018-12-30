@@ -6,11 +6,18 @@ import {
   UPDATE_EPOCH,
   APPEND_ERROR,
   UPDATE_ERRORS,
+  UPDATE_LEARNING_RATE,
 } from '../actions/actions'
 
 export const weights = (state = [], action) => (
   action.type === UPDATE_WEIGHTS
     ? action.weights
+    : state
+)
+
+export const weightDiff = (state = [], action) => (
+  action.type === UPDATE_WEIGHTS
+    ? action.weightDiff
     : state
 )
 
@@ -38,8 +45,13 @@ export const epoch = (state = 0, action) => (
     : state
 )
 
+export const learningRate = (state = 0.1, action) => (
+  action.type === UPDATE_LEARNING_RATE
+    ? action.learningRate
+    : state
+)
+
 export const errors = (state = [], action) => {
-  console.log(action)
   switch(action.type) {
     case APPEND_ERROR:
       return { ...state, errors: [...state.errors, action.error]}

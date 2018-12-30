@@ -1,46 +1,29 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
-import Product from './body/Product'
-
-const items = [
-  [
-    {type: 'input', label:'X',},
-    {type: 'input', label:'Y',},
-    {type: 'bias', label:'bias',},
-  ],
-  [
-    {type: 'input', label:'output',},
-  ]
-]
+import { StoreContext } from '../context/StoreContext'
+import Field from './body/Field'
+import InputLayer from './body/InputLayer'
 
 function Body({ classes }) {
+  const { state } = useContext(StoreContext)
+  const { inputs, target } = state.set[state.index]
+  
   return (
     <Grid
       container
-      direction='column'
+      direction='row'
       justify='center'
       alignContent='center'
-      spacing={24}
+      spacing={16}
     >
-      {items.map((item, index) => 
-        <Grid
-          key={index}
-          container
-          direction='row'
-          justify='center'
-          alignContent='center'
-          spacing={24}
-          className={classes.container}
-        >
-          {item.map((el, index) =>
-            <Grid key={index} item>
-              <Product label={el.label} type={el.type} />
-            </Grid>
-          )}
-        </Grid>
-      )}
+      <Grid item xs={12}>
+        <Field label={'target'} value={target} />
+      </Grid>
+      <Grid item xs={4}>
+        <InputLayer inputs={inputs} weights={state.weights} />
+      </Grid>
     </Grid>
   )
 }
@@ -50,12 +33,7 @@ Body.propTypes = {
 }
 
 const styles = theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    marginTop: theme.spacing.unit,
-    marginBottom: theme.spacing.unit,
-  },
+  
 })
 
 export default withStyles(styles)(Body)

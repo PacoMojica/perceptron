@@ -1,6 +1,7 @@
 import {
   CHANGE_INDEX,
   UPDATE_SET,
+  UPDATE_HYPERPLANE
 } from '../actions/actions'
 
 export const index = (state = 0, action) => (
@@ -18,5 +19,11 @@ export const set = (state = [], action) => (
 export const setSize = (state = 0, action) => (
   action.type === UPDATE_SET
     ? action.setSize
+    : state
+)
+
+export const hyperplane = (state = [], action) => (
+  action.type === UPDATE_HYPERPLANE
+    ? action.hyperplane
     : state
 )

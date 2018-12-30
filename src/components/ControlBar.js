@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
@@ -9,16 +9,20 @@ import Divider from '@material-ui/core/Divider'
 import InboxIcon from '@material-ui/icons/Inbox'
 import DraftsIcon from '@material-ui/icons/Drafts'
 import Paper from '@material-ui/core/Paper'
+import { StoreContext } from '../context/StoreContext'
+import { randomArray } from '../util/stateUtil'
 
 function ListItemLink(props) {
   return <ListItem button component="a" {...props} />
 }
 
 function ControlBar({ classes }) {
+  const { state, dispatch } = useContext(StoreContext)
+
   return (
     <Paper className={classes.root}>
       <List component="nav">
-        <ListItem button>
+        <ListItem button onClick={() => dispatch({type: 'UPDATE_WEIGHTS', weights: randomArray()})}>
           <ListItemIcon>
             <InboxIcon />
           </ListItemIcon>
