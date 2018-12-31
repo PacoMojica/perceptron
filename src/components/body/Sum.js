@@ -2,9 +2,10 @@ import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
-import Input from './Input'
+import Paper from '@material-ui/core/Paper'
+import Field from './Field'
 
-function Inputlayer({ classes, inputs, weights }) {
+function Sum({ classes, sum }) {
   return (
     <Grid
       container
@@ -14,15 +15,18 @@ function Inputlayer({ classes, inputs, weights }) {
       spacing={16}
       className={classes.container}
     >
-      {inputs.slice(0, 2).map((input, index) => (
-        <Input key={index} input={input} weight={weights[index]} />
-      ))}
+      <Grid item>
+        <Paper className={classes.paper}>
+          <Field label={'sum'} value={sum} />
+        </Paper>
+      </Grid>
     </Grid>
   )
 }
 
-Inputlayer.propTypes = {
+Sum.propTypes = {
   classes: PropTypes.object.isRequired,
+  sum: PropTypes.number.isRequired,
 }
 
 const styles = theme => ({
@@ -31,6 +35,9 @@ const styles = theme => ({
     flexWrap: 'wrap',
     margin: theme.spacing.unit,
   },
+  paper: {
+    padding: theme.spacing.unit * 2,
+  },
 })
 
-export default withStyles(styles)(Inputlayer)
+export default withStyles(styles)(Sum)

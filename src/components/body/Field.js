@@ -38,6 +38,8 @@ const styles = theme => ({
 
 Field.propTypes = {
   classes: PropTypes.object.isRequired,
+  label: PropTypes.string.isRequired,
+  value: PropTypes.any.isRequired,
 }
 
 export default withStyles(styles)(Field)

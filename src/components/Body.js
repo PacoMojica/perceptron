@@ -5,6 +5,9 @@ import Grid from '@material-ui/core/Grid'
 import { StoreContext } from '../context/StoreContext'
 import Field from './body/Field'
 import InputLayer from './body/InputLayer'
+import ProductLayer from './body/ProductLayer'
+import Sum from './body/Sum'
+import Output from './body/Output'
 
 function Body({ classes }) {
   const { state } = useContext(StoreContext)
@@ -23,6 +26,15 @@ function Body({ classes }) {
       </Grid>
       <Grid item xs={4}>
         <InputLayer inputs={inputs} weights={state.weights} />
+      </Grid>
+      <Grid item xs={4}>
+        <ProductLayer products={state.products}    />
+      </Grid>
+      <Grid item xs={4}>
+        <Sum sum={state.weightedSum} />
+      </Grid>
+      <Grid item xs={12}>
+        <Output output={state.output} sum={state.weightedSum} />
       </Grid>
     </Grid>
   )
