@@ -12,7 +12,11 @@ function TabItem({ children }) {
     <Typography component="div" style={{ padding: 8 * 3 }}>
       {children}
     </Typography>
-  );
+  )
+}
+
+TabItem.propTypes = {
+  children: PropTypes.node.isRequired,
 }
 
 function TabContainer({ classes }) {

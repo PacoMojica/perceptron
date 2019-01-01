@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import Field from './Field'
+import { StoreContext } from '../../context/StoreContext'
 
 function Sum({ classes, sum }) {
+  const { state } = useContext(StoreContext)
+  const [ssum] = useState(state.weightedSum)
   return (
     <Grid
       container
@@ -17,7 +20,9 @@ function Sum({ classes, sum }) {
     >
       <Grid item>
         <Paper className={classes.paper}>
-          <Field label={'sum'} value={sum} />
+          <Field label={'sum'} value={ssum}>
+            {state.weightedSum}
+          </Field>
         </Paper>
       </Grid>
     </Grid>

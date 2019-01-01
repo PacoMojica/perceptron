@@ -3,13 +3,22 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import Divider from '@material-ui/core/Divider'
 import Drawer from '@material-ui/core/Drawer'
-import TrainingState from './sidebar/TrainingState'
 import { StoreContext } from '../context/StoreContext'
+import TrainingState from './sidebar/TrainingState'
+import Controls from './sidebar/Controls'
+import { calcNewWeights } from '../util/stateUtil'
+import { updateWeights, updateWeightedSum } from '../actions/index'
 
-function SideBar({ classes, theme }) {
+function SideBar({ classes }) {
   const { state, dispatch } = useContext(StoreContext)
   const nextIndex = (state.index + 1) % state.setSize
   const nextItem = state.set[nextIndex]
+
+  const feedNeuron = () => {
+    const newWeights = calcNewWeights(state.weights, state.weightDiff)
+    dispatch(updateWeights(newWeights, state.weightDiff))
+    dispatch(updateWeightedSum(state.weightedSum + 1))
+  }
 
   return (
     <nav className={classes.drawer}>
@@ -30,6 +39,9 @@ function SideBar({ classes, theme }) {
           nextItem={nextItem}
         />
         <Divider />
+        <Controls
+          feedNeuron={feedNeuron}
+        />
       </Drawer>
     </nav>
   )
@@ -37,16 +49,13 @@ function SideBar({ classes, theme }) {
 
 SideBar.propTypes = {
   classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
 }
 
 const DRAWER_WIDTH = 300
 const styles = theme => ({
   drawer: {
-    [theme.breakpoints.up('sm')]: {
-      width: DRAWER_WIDTH,
-      flexShrink: 0,
-    },
+    width: DRAWER_WIDTH,
+    flexShrink: 0,
   },
   toolbar: theme.mixins.toolbar,
   drawerPaper: {

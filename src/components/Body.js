@@ -1,14 +1,12 @@
 import React, { useContext } from 'react'
-import { withStyles } from '@material-ui/core/styles'
-import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
-import { StoreContext } from '../context/StoreContext'
 import InputLayer from './body/InputLayer'
 import ProductLayer from './body/ProductLayer'
 import Sum from './body/Sum'
 import Output from './body/Output'
+import { StoreContext } from '../context/StoreContext'
 
-function Body({ classes }) {
+function Body() {
   const { state } = useContext(StoreContext)
   const { inputs, target } = state.set[state.index]
   
@@ -36,12 +34,4 @@ function Body({ classes }) {
   )
 }
 
-Body.propTypes = {
-  classes: PropTypes.object.isRequired,
-}
-
-const styles = theme => ({
-  
-})
-
-export default withStyles(styles)(Body)
+export default Body

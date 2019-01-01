@@ -11,7 +11,7 @@ export const randomArray = (size = 3, start = -1, end = 1) => (
   )
 )
 
-const randomCoord = () => Math.floor(Math.random() * 9)
+const randomCoord = () => (Math.random() * 9)
 
 const inSet = (x, y, [a, b, c]) => (y >= (
   (-1 * c) - (x * a)) / b
@@ -46,19 +46,53 @@ export const calcProducts = (x, y) => {
   return products
 }
 
+export const calcWeightedSum = (products) => (
+  products.reduce((x, y) => x + y)
+)
+
+export const calcOutput = (weightedSum) => (
+  weightedSum >= 0 ? 1 : 0
+)
+
+export const calcError = (target, output) => (
+  target - output
+)
+
+export const calcWeightDiff = (weights, inputs, error, learningRate) => {
+  let weightDiff = []
+
+  for(let i = 0; i < 3; i++) {
+    weightDiff.push(
+      weights[i] + learningRate * error * inputs[i]
+    )
+  }
+
+  return weightDiff
+}
+
+export const calcNewWeights = (weights, weightDiff) => {
+  let newWeights = []
+
+  for(let i = 0; i < 3; i++) {
+    newWeights.push(
+      weights[i] + weightDiff[i]
+    )
+  }
+  
+  return newWeights
+}
+
 export const initState = () => {
   const hyperplane = randomArray()
   const weights = randomArray()
   const set = generateSet(hyperplane)
   const { inputs, target } = set[0]
   const products = calcProducts(inputs, weights)
-  const weightedSum = products.reduce((x, y) => x + y)
-  const output = weightedSum >= 0 ? 1 : 0
-  const error = target - output
+  const weightedSum = calcWeightedSum(products)
+  const output = calcOutput(weightedSum)
+  const error = calcError(target, output)
   const learningRate = 0.1
-  const weightDiff = weights.map((weight, index) => (
-    weight + learningRate * error * inputs[index]
-  ))
+  const weightDiff = calcWeightDiff(weights, inputs, error, learningRate)
 
 
   return {

@@ -23,6 +23,8 @@ function Inputlayer({ classes, inputs, weights }) {
 
 Inputlayer.propTypes = {
   classes: PropTypes.object.isRequired,
+  inputs: PropTypes.array.isRequired,
+  weights: PropTypes.array.isRequired,
 }
 
 const styles = theme => ({
