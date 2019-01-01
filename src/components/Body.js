@@ -1,15 +1,11 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Grid from '@material-ui/core/Grid'
 import InputLayer from './body/InputLayer'
 import ProductLayer from './body/ProductLayer'
 import Sum from './body/Sum'
 import Output from './body/Output'
-import { StoreContext } from '../context/StoreContext'
 
-function Body() {
-  const { state } = useContext(StoreContext)
-  const { inputs, target } = state.set[state.index]
-  
+function Body() {  
   return (
     <Grid
       container
@@ -19,16 +15,16 @@ function Body() {
       spacing={16}
     >
       <Grid item xs={12}>
-        <InputLayer inputs={inputs} weights={state.weights} />
+        <InputLayer />
       </Grid>
       <Grid item xs={12}>
-        <ProductLayer products={state.products}    />
+        <ProductLayer />
       </Grid>
       <Grid item xs={12}>
-        <Sum sum={state.weightedSum} />
+        <Sum />
       </Grid>
       <Grid item xs={12}>
-        <Output output={state.output} target={target} error={state.errors[state.epoch][state.index]} />
+        <Output />
       </Grid>
     </Grid>
   )

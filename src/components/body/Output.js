@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import Field from './Field'
+import { StoreContext } from '../../context/StoreContext';
 
-function Output({ classes, output, target, error }) {
+function Output({ classes }) {
+  const { state } = useContext(StoreContext)
+  const currentItem = state.set[state.index]
+  const error = state.errors[state.epoch][state.index]
+
   return (
     <Grid
       container
@@ -17,12 +22,12 @@ function Output({ classes, output, target, error }) {
     >
       <Grid item>
         <Paper className={classes.paper}>
-          <Field label={'target'} value={target} />
+          <Field label={'target'} value={currentItem.target} />
         </Paper>
       </Grid>
       <Grid item>
         <Paper className={classes.paper}>
-          <Field label={'output'} value={output} />
+          <Field label={'output'} value={state.output} />
         </Paper>
       </Grid>
       <Grid item>
@@ -36,9 +41,6 @@ function Output({ classes, output, target, error }) {
 
 Output.propTypes = {
   classes: PropTypes.object.isRequired,
-  output: PropTypes.number.isRequired,
-  target: PropTypes.number.isRequired,
-  error: PropTypes.number.isRequired,
 }
 
 const styles = theme => ({

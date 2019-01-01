@@ -54,9 +54,9 @@ export const learningRate = (state = 0.1, action) => (
 export const errors = (state = [], action) => {
   switch(action.type) {
     case APPEND_ERROR:
-      return { ...state, errors: [...state.errors, action.error]}
+      return [...state, action.error]
     case UPDATE_ERRORS:
-      return { ...state, errors: action.errors}
+      return action.errors
     default:
       return state
   }

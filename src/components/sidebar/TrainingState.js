@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { useContext } from 'react'
 import List from '@material-ui/core/List'
 import Item from './Item'
 import NestedItems from './NestedItems'
+import { StoreContext } from '../../context/StoreContext'
 import TrendingUpSharpIcon from '@material-ui/icons/TrendingUpSharp'
 import TrendingDownSharpIcon from '@material-ui/icons/TrendingDownSharp'
 import ChangeHistoryIcon from '@material-ui/icons/ChangeHistory'
@@ -13,24 +13,19 @@ import AccessTimeIcon from '@material-ui/icons/AccessTime'
 import StraightenIcon from '@material-ui/icons/Straighten'
 import PhotoSizeSelectSmallIcon from '@material-ui/icons/PhotoSizeSelectSmall'
 
-function TrainingState(props) {
-  const { 
-    index,
-    setSize,
-    epoch,
-    learningRate,
-    weightDiff,
-    nextItem,
-  } = props
+function TrainingState() {
+  const { state } = useContext(StoreContext)
+  const nextIndex = (state.index + 1) % state.setSize
+  const nextItem = state.set[nextIndex]
 
   return (
     <List dense={true}>
-      <Item label='index' value={index} />
-      <Item label='set size' value={setSize} Icon={StraightenIcon} />
-      <Item label='current epoch' value={epoch} Icon={AccessTimeIcon} />
-      <Item label='learning rate' value={learningRate} Icon={PhotoSizeSelectSmallIcon} />
+      <Item label='index' value={state.index} />
+      <Item label='set size' value={state.setSize} Icon={StraightenIcon} />
+      <Item label='current epoch' value={state.epoch} Icon={AccessTimeIcon} />
+      <Item label='learning rate' value={state.learningRate} Icon={PhotoSizeSelectSmallIcon} />
       <NestedItems title='Weight Updates' Icon={ChangeHistoryIcon}>
-        {weightDiff.map((weight, index) => (
+        {state.weightDiff.map((weight, index) => (
           <Item
             key={index}
             label={index < 2 ? 'weight' : 'bias'}
@@ -45,13 +40,6 @@ function TrainingState(props) {
       </NestedItems>
     </List>
   )
-}
-
-TrainingState.propTypes = {
-  index: PropTypes.number.isRequired,
-  epoch: PropTypes.number.isRequired,
-  weightDiff: PropTypes.array.isRequired,
-  nextItem: PropTypes.object.isRequired,
 }
 
 export default TrainingState

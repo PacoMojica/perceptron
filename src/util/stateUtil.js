@@ -101,7 +101,7 @@ export const initState = () => {
     weightedSum: weightedSum,
     output: output,
     epoch: 0,
-    errors: [[error]],
+    errors: [error],
     weightDiff: weightDiff,
     hyperplane: hyperplane,
     set: set,

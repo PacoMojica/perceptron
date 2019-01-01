@@ -4,14 +4,13 @@ import PropTypes from 'prop-types'
 import TextField from '@material-ui/core/TextField'
 import Grid from '@material-ui/core/Grid'
 
-function Field({ classes, children, label, value }) {
+function Field({ classes, label, value }) {
   return (
     <Grid item>
-    {children}
       <TextField
         label={label}
-        defaultValue={value}
         className={classes.textField}
+        value={value}
         margin='none'
         variant='standard'
         InputProps={{

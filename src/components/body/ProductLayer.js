@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import Field from './Field'
+import { StoreContext } from '../../context/StoreContext'
 
-function ProductLayer({ classes, products }) {
+function ProductLayer({ classes }) {
+  const { state } = useContext(StoreContext)
+
   return (
     <Grid
       container
@@ -15,7 +18,7 @@ function ProductLayer({ classes, products }) {
       spacing={16}
       className={classes.container}
     >
-      {products.map((product, index) => (
+      {state.products.map((product, index) => (
         <Grid key={index} item>
             <Paper className={classes.paper}>
               {index < 2
@@ -31,7 +34,6 @@ function ProductLayer({ classes, products }) {
 
 ProductLayer.propTypes = {
   classes: PropTypes.object.isRequired,
-  products: PropTypes.array.isRequired,
 }
 
 const styles = theme => ({
