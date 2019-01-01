@@ -5,11 +5,11 @@ import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import Field from './Field'
 
-function Output({ classes, output, sum }) {
+function Output({ classes, output, target, error }) {
   return (
     <Grid
       container
-      direction='column'
+      direction='row'
       justify='center'
       alignContent='center'
       spacing={16}
@@ -17,10 +17,17 @@ function Output({ classes, output, sum }) {
     >
       <Grid item>
         <Paper className={classes.paper}>
-          <Field
-            label={'output'}
-            value={`sum: ${sum} ${sum === 0 ? 'equals' : sum > 0 ? 'greater than' : 'less than'} 0 then the output is ${output }`}
-          />
+          <Field label={'target'} value={target} />
+        </Paper>
+      </Grid>
+      <Grid item>
+        <Paper className={classes.paper}>
+          <Field label={'output'} value={output} />
+        </Paper>
+      </Grid>
+      <Grid item>
+        <Paper className={classes.paper}>
+          <Field label={'error'} value={error} />
         </Paper>
       </Grid>
     </Grid>
@@ -30,17 +37,17 @@ function Output({ classes, output, sum }) {
 Output.propTypes = {
   classes: PropTypes.object.isRequired,
   output: PropTypes.number.isRequired,
-  sum: PropTypes.number.isRequired,
+  target: PropTypes.number.isRequired,
+  error: PropTypes.number.isRequired,
 }
 
 const styles = theme => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
-    margin: theme.spacing.unit,
   },
   paper: {
-    padding: theme.spacing.unit * 2,
+    padding: theme.spacing.unit,
   },
 })
 

@@ -3,7 +3,6 @@ import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
 import { StoreContext } from '../context/StoreContext'
-import Field from './body/Field'
 import InputLayer from './body/InputLayer'
 import ProductLayer from './body/ProductLayer'
 import Sum from './body/Sum'
@@ -22,19 +21,16 @@ function Body({ classes }) {
       spacing={16}
     >
       <Grid item xs={12}>
-        <Field label={'target'} value={target} />
-      </Grid>
-      <Grid item xs={4}>
         <InputLayer inputs={inputs} weights={state.weights} />
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={12}>
         <ProductLayer products={state.products}    />
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={12}>
         <Sum sum={state.weightedSum} />
       </Grid>
       <Grid item xs={12}>
-        <Output output={state.output} sum={state.weightedSum} />
+        <Output output={state.output} target={target} error={state.errors[state.epoch][state.index]} />
       </Grid>
     </Grid>
   )

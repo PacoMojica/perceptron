@@ -8,7 +8,7 @@ function Inputlayer({ classes, inputs, weights }) {
   return (
     <Grid
       container
-      direction='column'
+      direction='row'
       justify='center'
       alignContent='center'
       spacing={16}
@@ -29,7 +29,6 @@ const styles = theme => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
-    margin: theme.spacing.unit,
   },
 })
 

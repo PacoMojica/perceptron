@@ -28,7 +28,7 @@ function TabContainer({ classes }) {
         <Tabs value={value} onChange={handleChange}>
           <Tab label='Inputs & Weigths' />
           <Tab label='Error Graph' />
-          <Tab label='Lines Described' />
+          <Tab label='Hyperplanes' />
         </Tabs>
       </AppBar>
       {value === 0 && <TabItem><Body /></TabItem>}
