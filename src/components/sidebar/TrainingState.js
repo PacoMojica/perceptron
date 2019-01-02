@@ -5,6 +5,7 @@ import NestedItems from './NestedItems'
 import { StoreContext } from '../../context/StoreContext'
 import TrendingUpSharpIcon from '@material-ui/icons/TrendingUpSharp'
 import TrendingDownSharpIcon from '@material-ui/icons/TrendingDownSharp'
+import TrendingFlatSharpIcon from '@material-ui/icons/TrendingFlatSharp'
 import ChangeHistoryIcon from '@material-ui/icons/ChangeHistory'
 import FastForwardIcon from '@material-ui/icons/FastForward'
 import AdjustIcon from '@material-ui/icons/Adjust'
@@ -30,7 +31,11 @@ function TrainingState() {
             key={index}
             label={index < 2 ? 'weight' : 'bias'}
             value={weight}
-            Icon={weight > 0 ? TrendingUpSharpIcon : TrendingDownSharpIcon}
+            Icon={weight === 0
+              ? TrendingFlatSharpIcon
+              : weight > 0
+                ? TrendingUpSharpIcon
+                : TrendingDownSharpIcon}
           />
         ))}
       </NestedItems>

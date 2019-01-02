@@ -92,7 +92,9 @@ export const initState = () => {
   const output = calcOutput(weightedSum)
   const error = calcError(target, output)
   const learningRate = 0.1
-  const weightDiff = calcWeightDiff(weights, inputs, error, learningRate)
+  const weightDiff = error === 0
+    ? [0, 0, 0]
+    : calcWeightDiff(weights, inputs, error, learningRate)
 
 
   return {
