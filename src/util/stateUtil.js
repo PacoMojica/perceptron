@@ -63,7 +63,7 @@ export const calcWeightDiff = (weights, inputs, error, learningRate) => {
 
   for(let i = 0; i < 3; i++) {
     weightDiff.push(
-      weights[i] + learningRate * error * inputs[i]
+      learningRate * error * inputs[i]
     )
   }
 

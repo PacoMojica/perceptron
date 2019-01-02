@@ -8,8 +8,8 @@ import { StoreContext } from '../../context/StoreContext';
 
 function Output({ classes }) {
   const { state } = useContext(StoreContext)
-  const { index, errors, epoch, setSize}
-  const currentItem = state.set[state.index]
+  const { index, errors, epoch, setSize} = state
+  const currentItem = state.set[index]
   const error = errors[epoch * setSize + index]
 
   return (
