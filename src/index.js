@@ -8,7 +8,7 @@ ReactDOM.render(
   <Store><App /></Store>,
   document.getElementById('root')
 )
-
+// a test
 /*
 state = {
   weights: [0.1, 0.5, -0.2],
