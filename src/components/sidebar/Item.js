@@ -7,10 +7,16 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import Typography from '@material-ui/core/Typography'
 import RemoveIcon from '@material-ui/icons/Remove'
 
-function Item({ classes, label, value, nested = false, Icon = RemoveIcon}) {
+function Item(props) {
+  const { classes, Icon, onClick } = props
+  const handleClick = () => typeof onClick === 'function' && onClick()
 
   return (
-    <ListItem className={nested ? classes.nested : classes.parent }>
+    <ListItem
+      button={props.button}
+      onClick={handleClick}
+      className={props.nested ? classes.nested : classes.parent }
+    >
       <ListItemIcon>
         <Icon />
       </ListItemIcon>
@@ -18,21 +24,31 @@ function Item({ classes, label, value, nested = false, Icon = RemoveIcon}) {
         primary={
           <React.Fragment>
             <Typography component="span" className={classes.inline} color="textPrimary">
-              {value}
+              {props.value}
             </Typography>
           </React.Fragment>
         }
-        secondary={label}
+        secondary={props.label}
       />
     </ListItem>
   )
 }
 
+Item.defaultProps = {
+  label: '',
+  Icon: RemoveIcon,
+  nested: false,
+  button: false,
+}
+
 Item.propTypes = {
   classes: PropTypes.object.isRequired,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   value: PropTypes.any.isRequired,
   Icon: PropTypes.func,
+  nested: PropTypes.bool,
+  button: PropTypes.bool,
+  onClick: PropTypes.func,
 }
 
 const styles = theme => ({

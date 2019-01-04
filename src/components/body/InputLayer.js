@@ -1,10 +1,16 @@
-import React from 'react'
-import { withStyles } from '@material-ui/core/styles'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
+import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
-import Input from './Input'
+import Paper from '@material-ui/core/Paper'
+import Field from './Field'
+import { StoreContext } from '../../context/StoreContext'
 
-function Inputlayer({ classes, inputs, weights }) {
+function Inputlayer({ classes }) {
+  const { state } = useContext(StoreContext)
+  const { index, weights } = state.calculated
+  const { inputs } = state.trainingSet[index]
+
   return (
     <Grid
       container
@@ -15,7 +21,12 @@ function Inputlayer({ classes, inputs, weights }) {
       className={classes.container}
     >
       {inputs.slice(0, 2).map((input, index) => (
-        <Input key={index} input={input} weight={weights[index]} />
+        <Grid key={index} item>
+          <Paper className={classes.paper}>
+            <Field label={'input'} value={input} />
+            <Field label={'weight'} value={weights[index]} />
+          </Paper>
+        </Grid>
       ))}
     </Grid>
   )
@@ -29,6 +40,9 @@ const styles = theme => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
+  },
+  paper: {
+    padding: theme.spacing.unit,
   },
 })
 

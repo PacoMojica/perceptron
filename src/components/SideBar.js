@@ -1,15 +1,12 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import Divider from '@material-ui/core/Divider'
 import Drawer from '@material-ui/core/Drawer'
 import TrainingState from './sidebar/TrainingState'
-import { StoreContext } from '../context/StoreContext'
+import Controls from './sidebar/Controls'
 
-function SideBar({ classes, theme }) {
-  const { state, dispatch } = useContext(StoreContext)
-  const nextIndex = (state.index + 1) % state.setSize
-  const nextItem = state.set[nextIndex]
+function SideBar({ classes }) {
 
   return (
     <nav className={classes.drawer}>
@@ -21,15 +18,9 @@ function SideBar({ classes, theme }) {
       >
         <div className={classes.toolbar} />
         <Divider />
-        <TrainingState
-          index={state.index}
-          setSize={state.setSize}
-          epoch={state.epoch}
-          learningRate={state.learningRate}
-          weightDiff={state.weightDiff}
-          nextItem={nextItem}
-        />
+        <TrainingState />
         <Divider />
+        <Controls />
       </Drawer>
     </nav>
   )
@@ -37,16 +28,13 @@ function SideBar({ classes, theme }) {
 
 SideBar.propTypes = {
   classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
 }
 
 const DRAWER_WIDTH = 300
 const styles = theme => ({
   drawer: {
-    [theme.breakpoints.up('sm')]: {
-      width: DRAWER_WIDTH,
-      flexShrink: 0,
-    },
+    width: DRAWER_WIDTH,
+    flexShrink: 0,
   },
   toolbar: theme.mixins.toolbar,
   drawerPaper: {

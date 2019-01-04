@@ -6,13 +6,18 @@ import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import Typography from '@material-ui/core/Typography'
 import Body from '../components/Body'
+import Hyperplane from '../components/Hyperplane'
 
 function TabItem({ children }) {
   return (
     <Typography component="div" style={{ padding: 8 * 3 }}>
       {children}
     </Typography>
-  );
+  )
+}
+
+TabItem.propTypes = {
+  children: PropTypes.node.isRequired,
 }
 
 function TabContainer({ classes }) {
@@ -32,7 +37,7 @@ function TabContainer({ classes }) {
         </Tabs>
       </AppBar>
       {value === 0 && <TabItem><Body /></TabItem>}
-      {value === 1 && <TabItem>Item Two</TabItem>}
+      {value === 1 && <TabItem><Hyperplane /></TabItem>}
       {value === 2 && <TabItem>Item Three</TabItem>}
     </div>
   )

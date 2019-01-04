@@ -9,8 +9,8 @@ function Field({ classes, label, value }) {
     <Grid item>
       <TextField
         label={label}
-        defaultValue={value}
         className={classes.textField}
+        value={value}
         margin='none'
         variant='standard'
         InputProps={{

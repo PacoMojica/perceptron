@@ -10,7 +10,7 @@ import ExpandLess from '@material-ui/icons/ExpandLess'
 import ExpandMore from '@material-ui/icons/ExpandMore'
 import RemoveIcon from '@material-ui/icons/Remove'
 
-function NestedItems({ classes, children, title, Icon = RemoveIcon }) {
+function NestedItems({ classes, children, title, Icon }) {
   const [ open, setOpen ] = useState(false)
   const handleClick = () => {
     setOpen(!open)
@@ -37,9 +37,15 @@ function NestedItems({ classes, children, title, Icon = RemoveIcon }) {
   )
 }
 
+NestedItems.defaultProps = {
+  Icon: RemoveIcon,
+}
+
 NestedItems.propTypes = {
   classes: PropTypes.object.isRequired,
+  children: PropTypes.node.isRequired,
   title: PropTypes.string.isRequired,
+  Icon: PropTypes.func,
 }
 
 const styles = theme => ({
