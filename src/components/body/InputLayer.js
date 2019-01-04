@@ -8,7 +8,8 @@ import { StoreContext } from '../../context/StoreContext'
 
 function Inputlayer({ classes }) {
   const { state } = useContext(StoreContext)
-  const { inputs } = state.set[state.index]
+  const { index, weights } = state.calculated
+  const { inputs } = state.trainingSet[index]
 
   return (
     <Grid
@@ -23,7 +24,7 @@ function Inputlayer({ classes }) {
         <Grid key={index} item>
           <Paper className={classes.paper}>
             <Field label={'input'} value={input} />
-            <Field label={'weight'} value={state.weights[index]} />
+            <Field label={'weight'} value={weights[index]} />
           </Paper>
         </Grid>
       ))}

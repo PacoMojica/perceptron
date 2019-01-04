@@ -58,7 +58,10 @@ export const calcError = (target, output) => (
   target - output
 )
 
-export const calcWeightDiff = (weights, inputs, error, learningRate) => {
+export const calcWeightDiff = (inputs, error, learningRate) => {
+  if(error === 0)
+    return [0, 0, 0]
+
   let weightDiff = []
 
   for(let i = 0; i < 3; i++) {
@@ -85,30 +88,29 @@ export const calcNewWeights = (weights, weightDiff) => {
 export const initState = () => {
   const hyperplane = randomArray()
   const weights = randomArray()
-  const set = generateSet(hyperplane)
-  const { inputs, target } = set[0]
+  const trainingSet = generateSet(hyperplane)
+  const { inputs, target } = trainingSet[0]
   const products = calcProducts(inputs, weights)
   const weightedSum = calcWeightedSum(products)
   const output = calcOutput(weightedSum)
   const error = calcError(target, output)
   const learningRate = 0.1
-  const weightDiff = error === 0
-    ? [0, 0, 0]
-    : calcWeightDiff(weights, inputs, error, learningRate)
+  const weightDiff = calcWeightDiff(inputs, error, learningRate)
 
 
   return {
-    weights: weights,
-    products: products,
-    weightedSum: weightedSum,
-    output: output,
-    epoch: 0,
-    errors: [error],
-    weightDiff: weightDiff,
+    calculated: {
+      index: 0,
+      weights: weights,
+      products: products,
+      weightedSum: weightedSum,
+      weightDiff: weightDiff,
+      output: output,
+      errors: [error],
+      epoch: 0,
+    },
     hyperplane: hyperplane,
-    set: set,
-    setSize: DEFAULT_SIZE,
-    index: 0,
+    trainingSet: trainingSet,
     learningRate: learningRate,
   }
 }

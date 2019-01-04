@@ -1,28 +1,23 @@
-import { index, set, setSize, hyperplane } from './SetReducers'
-import {
-  weights,
-  weightDiff,
-  products,
-  weightedSum,
-  output,
-  epoch,
-  errors,
-  learningRate,
-} from './TrainReducers'
+import * as handlers from './handlers'
+
+const createReducer = (initialState, handlers) => (
+  (state = initialState, action) => (
+    handlers.hasOwnProperty(action.type)
+      ? handlers[action.type](state, action)
+      : state
+  )
+)
+
+const calculatedReducer = createReducer({}, handlers.calculatedHandler)
+const trainingSetReducer = createReducer([], handlers.trainigSetHandler)
+const hyperplaneReducer = createReducer([], handlers.hyperplaneHandler)
+const learningRateReducer = createReducer(0.1, handlers.learningRateHandler)
 
 const reducer = (state = {}, action) => ({
-  weights: weights(state.weights, action),
-  products: products(state.products, action),
-  weightedSum: weightedSum(state.weightedSum, action),
-  output: output(state.output, action),
-  epoch: epoch(state.epoch, action),
-  errors: errors(state.errors, action),
-  weightDiff: weightDiff(state.weightDiff, action),
-  index: index(state.index, action),
-  hyperplane: hyperplane(state.hyperplane, action),
-  set: set(state.set, action),
-  setSize: setSize(state.setSize, action),
-  learningRate: learningRate(state.learningRate, action),
+  calculated: calculatedReducer(state.calculated, action),
+  trainingSet: trainingSetReducer(state.trainingSet, action),
+  hyperplane: hyperplaneReducer(state.hyperplane, action),
+  learningRate: learningRateReducer(state.learningRate, action),
 })
 
 export default reducer

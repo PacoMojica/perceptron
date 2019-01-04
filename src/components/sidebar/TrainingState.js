@@ -16,17 +16,19 @@ import PhotoSizeSelectSmallIcon from '@material-ui/icons/PhotoSizeSelectSmall'
 
 function TrainingState() {
   const { state } = useContext(StoreContext)
-  const nextIndex = (state.index + 1) % state.setSize
-  const nextItem = state.set[nextIndex]
+  const { index, epoch, weightDiff } = state.calculated
+  const setSize = state.trainingSet.length
+  const nextIndex = (index + 1) % setSize
+  const nextItem = state.trainingSet[nextIndex]
 
   return (
     <List dense={true}>
-      <Item label='index' value={state.index} />
-      <Item label='set size' value={state.setSize} Icon={StraightenIcon} />
-      <Item label='current epoch' value={state.epoch} Icon={AccessTimeIcon} />
+      <Item label='index' value={index} />
+      <Item label='set size' value={setSize} Icon={StraightenIcon} />
+      <Item label='current epoch' value={epoch} Icon={AccessTimeIcon} />
       <Item label='learning rate' value={state.learningRate} Icon={PhotoSizeSelectSmallIcon} />
       <NestedItems title='Weight Updates' Icon={ChangeHistoryIcon}>
-        {state.weightDiff.map((weight, index) => (
+        {weightDiff.map((weight, index) => (
           <Item
             key={index}
             label={index < 2 ? 'weight' : 'bias'}

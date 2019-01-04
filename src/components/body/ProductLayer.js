@@ -18,7 +18,7 @@ function ProductLayer({ classes }) {
       spacing={16}
       className={classes.container}
     >
-      {state.products.map((product, index) => (
+      {state.calculated.products.map((product, index) => (
         <Grid key={index} item>
             <Paper className={classes.paper}>
               {index < 2

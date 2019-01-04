@@ -19,7 +19,7 @@ function Sum({ classes }) {
     >
       <Grid item>
         <Paper className={classes.paper}>
-          <Field label={'sum'} value={state.weightedSum} />
+          <Field label={'sum'} value={state.calculated.weightedSum} />
         </Paper>
       </Grid>
     </Grid>

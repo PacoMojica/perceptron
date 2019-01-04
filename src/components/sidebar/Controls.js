@@ -7,31 +7,31 @@ import { StoreContext } from '../../context/StoreContext'
 
 function Controls() {
   const { state, dispatch } = useContext(StoreContext)
-  const { errors, index, weights, weightDiff, setSize, epoch } = state
-  
+  const { errors, index, weights, weightDiff, epoch } = state.calculated
+  const setSize = state.trainingSet.length
+
   const feedNeuron = () => {
-    const currentError = errors[epoch * setSize + index]
-    const newWeights = currentError !== 0
-      ? util.calcNewWeights(weights, weightDiff)
-      : weights
+    const newWeights = util.calcNewWeights(weights, weightDiff)
     const nextIndex = (index + 1) % setSize
     const nextEpoch = ((!nextIndex && epoch + 1) || epoch)
-    const { inputs, target } = state.set[nextIndex]
+    const { inputs, target } = state.trainingSet[nextIndex]
     const products = util.calcProducts(inputs, newWeights)
     const weightedSum = util.calcWeightedSum(products)
     const output = util.calcOutput(weightedSum)
     const newError = util.calcError(target, output)
-    const newWeightDiff = newError === 0
-      ? [0, 0, 0]
-      : util.calcWeightDiff(newWeights, inputs, newError, state.learningRate)
-
-    dispatch(actions.changeIndex(nextIndex))
-    dispatch(actions.updateEpoch(nextEpoch))
-    dispatch(actions.updateWeights(newWeights, newWeightDiff))
-    dispatch(actions.updateProducts(products))
-    dispatch(actions.updateWeightedSum(weightedSum))
-    dispatch(actions.updateOutput(output))
-    dispatch(actions.appendError(newError))
+    const newErrors = [...errors, newError]
+    const newWeightDiff = util.calcWeightDiff(inputs, newError, state.learningRate)
+    
+    dispatch(actions.train(
+      nextIndex,
+      newWeights,
+      products,
+      weightedSum,
+      newWeightDiff,
+      output,
+      newErrors,
+      nextEpoch,
+    ))
   }
   
   return (

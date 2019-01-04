@@ -8,8 +8,9 @@ import { StoreContext } from '../../context/StoreContext';
 
 function Output({ classes }) {
   const { state } = useContext(StoreContext)
-  const { index, errors, epoch, setSize} = state
-  const currentItem = state.set[index]
+  const { index, errors, epoch, output } = state.calculated
+  const setSize = state.trainingSet.length
+  const currentItem = state.trainingSet[index]
   const error = errors[epoch * setSize + index]
 
   return (
@@ -28,7 +29,7 @@ function Output({ classes }) {
       </Grid>
       <Grid item>
         <Paper className={classes.paper}>
-          <Field label={'output'} value={state.output} />
+          <Field label={'output'} value={output} />
         </Paper>
       </Grid>
       <Grid item>
