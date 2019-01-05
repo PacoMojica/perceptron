@@ -8,13 +8,11 @@ import Typography from '@material-ui/core/Typography'
 import Body from '../components/Body'
 import Hyperplane from '../components/Hyperplane'
 
-function TabItem({ children }) {
-  return (
-    <Typography component="div" style={{ padding: 8 * 3 }}>
-      {children}
-    </Typography>
-  )
-}
+const TabItem = ({ children }) => (
+  <Typography component="div" style={{ padding: 8 * 3, minHeight: 500, }}>
+    {children}
+  </Typography>
+)
 
 TabItem.propTypes = {
   children: PropTypes.node.isRequired,
@@ -36,8 +34,8 @@ function TabContainer({ classes }) {
           <Tab label='Hyperplanes' />
         </Tabs>
       </AppBar>
-      {value === 0 && <TabItem><Body /></TabItem>}
-      {value === 1 && <TabItem><Hyperplane /></TabItem>}
+      {value === 0 && <TabItem><Hyperplane /></TabItem>}
+      {value === 1 && <TabItem><Body /></TabItem>}
       {value === 2 && <TabItem>Item Three</TabItem>}
     </div>
   )
