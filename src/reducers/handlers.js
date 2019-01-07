@@ -1,5 +1,26 @@
 import * as actions from '../actions/actions'
 
+/**
+ * State Handlers
+ */
+const changeHyperplane = (state, action) => ({
+  ...state,
+  calculated: {
+    ...state.calculated,
+    weightDiff: action.weightDiff,
+    errors: action.errors,
+  },
+  hyperplane: action.hyperplane,
+  trainingSet: action.trainingSet,
+})
+
+export const stateHandler = {
+  [actions.CHANGE_HYPERPLANE]: changeHyperplane,
+}
+
+/**
+ * Calculated Handlers
+ */
 const train = (state, action) => ({
   ...state,
   index: action.index,
@@ -12,17 +33,22 @@ const train = (state, action) => ({
   epoch: action.epoch,
 })
 
+
 export const calculatedHandler = {
   [actions.TRAIN]: train,
 }
 
+/**
+ * Training Set Handlers
+ */
 export const trainigSetHandler = {
   [actions.CHANGE_TRAINING_SET]: (state, action) => action.trainigSet,
 }
 
-export const hyperplaneHandler = {
-  [actions.CHANGE_HYPERPLANE]: (state, action) => action.hyperplane,
-}
+
+/**
+ * Learning Rate Handlers
+ */
 export const learningRateHandler = {
   [actions.CHANGE_LEARNING_RATE]: (state, action) => action.learningRate,
 }

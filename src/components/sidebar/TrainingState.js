@@ -23,11 +23,13 @@ function TrainingState() {
 
   return (
     <List dense={true}>
-      <Item label='index' value={index} />
-      <Item label='set size' value={setSize} Icon={StraightenIcon} />
-      <Item label='current epoch' value={epoch} Icon={AccessTimeIcon} />
-      <Item label='learning rate' value={state.learningRate} Icon={PhotoSizeSelectSmallIcon} />
-      <NestedItems title='Weight Updates' Icon={ChangeHistoryIcon}>
+      <NestedItems title='Training Info'>
+        <Item key='index' label='index' value={index} />
+        <Item key='set size' label='set size' value={setSize} Icon={StraightenIcon} />
+        <Item key='current epoch' label='current epoch' value={epoch} Icon={AccessTimeIcon} />
+        <Item key='learning rate' label='learning rate' value={state.learningRate} Icon={PhotoSizeSelectSmallIcon} />
+      </NestedItems>
+      <NestedItems title='Weight Updates' Icon={ChangeHistoryIcon} startOpen={true}>
         {weightDiff.map((weight, index) => (
           <Item
             key={index}

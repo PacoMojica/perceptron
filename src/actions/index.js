@@ -23,7 +23,10 @@ export const changeTrainingSet = actionCreator(
 
 export const changeHyperplane = actionCreator(
   actions.CHANGE_HYPERPLANE,
-  'hyperplane'
+  'hyperplane',
+  'trainingSet',
+  'errors',
+  'weightDiff'
 )
 
 export const changeLearningRate = actionCreator(

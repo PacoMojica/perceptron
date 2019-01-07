@@ -8,16 +8,21 @@ const createReducer = (initialState, handlers) => (
   )
 )
 
+const stateReducer = createReducer({}, handlers.stateHandler)
 const calculatedReducer = createReducer({}, handlers.calculatedHandler)
 const trainingSetReducer = createReducer([], handlers.trainigSetHandler)
-const hyperplaneReducer = createReducer([], handlers.hyperplaneHandler)
 const learningRateReducer = createReducer(0.1, handlers.learningRateHandler)
 
 const reducer = (state = {}, action) => ({
-  calculated: calculatedReducer(state.calculated, action),
-  trainingSet: trainingSetReducer(state.trainingSet, action),
-  hyperplane: hyperplaneReducer(state.hyperplane, action),
-  learningRate: learningRateReducer(state.learningRate, action),
+  ...stateReducer(
+    {
+      ...state,
+      calculated: calculatedReducer(state.calculated, action),
+      trainingSet: trainingSetReducer(state.trainingSet, action),
+      learningRate: learningRateReducer(state.learningRate, action),
+    },
+    action
+  ),
 })
 
 export default reducer

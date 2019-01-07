@@ -6,7 +6,6 @@ import {
   CartesianGrid,
   XAxis,
   YAxis,
-  Tooltip,
   ResponsiveContainer,
 } from 'recharts'
 
@@ -54,7 +53,6 @@ function Hyperplane() {
   return (
     <ResponsiveContainer width='100%' height={500}>
       <LineChart margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-        <Tooltip />
         <Line name='base' yAxisId='0' data={lines} type="monotone" dataKey="y" stroke="green" />
         <Line name='perceptron' yAxisId='0' data={lines} type="monotone" dataKey="yp" stroke="blue" />
         <Line name='class a' yAxisId='0' data={points.classA} dataKey='y' isAnimationActive={false} stroke="transparent" dot={{fill: 'black'}} />

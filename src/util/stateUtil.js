@@ -13,13 +13,13 @@ export const randomArray = (size = 3, start = -1, end = 1) => (
 
 const randomCoord = () => (Math.random() * 9)
 
-const inSet = (x, y, [a, b, c]) => (y >= (
+export const inSet = (x, y, [a, b, c]) => (y >= (
   (-1 * c) - (x * a)) / b
     ? 1 //true
     : 0 //false
 )
 
-const generateSet = (hyperplane, size = DEFAULT_SIZE) => {
+export const generateSet = (hyperplane, size = DEFAULT_SIZE) => {
   let set = []
   
   for(let i = 0; i < size; i++) {

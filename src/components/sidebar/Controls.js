@@ -7,10 +7,11 @@ import { StoreContext } from '../../context/StoreContext'
 
 function Controls() {
   const { state, dispatch } = useContext(StoreContext)
+  const { learningRate } = state
   const { errors, index, weights, weightDiff, epoch } = state.calculated
   const setSize = state.trainingSet.length
 
-  const feedNeuron = () => {
+  const train = () => {
     const newWeights = util.calcNewWeights(weights, weightDiff)
     const nextIndex = (index + 1) % setSize
     const nextEpoch = ((!nextIndex && epoch + 1) || epoch)
@@ -20,7 +21,7 @@ function Controls() {
     const output = util.calcOutput(weightedSum)
     const newError = util.calcError(target, output)
     const newErrors = [...errors, newError]
-    const newWeightDiff = util.calcWeightDiff(inputs, newError, state.learningRate)
+    const newWeightDiff = util.calcWeightDiff(inputs, newError, learningRate)
     
     dispatch(actions.train(
       nextIndex,
@@ -33,10 +34,34 @@ function Controls() {
       nextEpoch,
     ))
   }
+
+  const changeHyperplane = () => {
+    const newHyperplane = util.randomArray()
+    const newTrainingSet = state.trainingSet.map(({inputs}) => ({
+      inputs: [...inputs],
+      target: util.inSet(
+        inputs[0],
+        inputs[1],
+        newHyperplane
+      ),
+    }))
+    const { inputs, target } = newTrainingSet[index]
+    const newError = util.calcError(target, state.calculated.output)
+    const newErrors = [ ...errors.slice(0, errors.length-1), newError]
+    const newWeightDiff = util.calcWeightDiff(inputs, newError, learningRate)
+
+    dispatch(actions.changeHyperplane(
+      newHyperplane,
+      newTrainingSet,
+      newErrors,
+      newWeightDiff
+    ))
+  }
   
   return (
     <List dense={true}>
-      <Item label='' value={'Feed Neuron'} button={true} onClick={() => feedNeuron()} />
+      <Item value={'Train'} button={true} onClick={() => train()} />
+      <Item value={'Change Base Hyperplane'} button={true} onClick={() => changeHyperplane()} />
     </List>
   )
 }

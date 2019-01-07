@@ -1,7 +1,7 @@
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
-import TabContainer from '../containers/TabContainer'
+import TabContainer from './TabContainer'
 import SideBar from './SideBar'
 
 function Perceptron({ classes }) {

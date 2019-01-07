@@ -5,8 +5,8 @@ import AppBar from '@material-ui/core/AppBar'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import Typography from '@material-ui/core/Typography'
-import Body from '../components/Body'
-import Hyperplane from '../components/Hyperplane'
+import Body from './Body'
+import Hyperplane from './Hyperplanes'
 
 const TabItem = ({ children }) => (
   <Typography component="div" style={{ padding: 8 * 3, minHeight: 500, }}>
@@ -29,9 +29,9 @@ function TabContainer({ classes }) {
     <div className={classes.root}>
       <AppBar position="static" color='default'>
         <Tabs value={value} onChange={handleChange}>
+          <Tab label='Hyperplanes' />
           <Tab label='Inputs & Weigths' />
           <Tab label='Error Graph' />
-          <Tab label='Hyperplanes' />
         </Tabs>
       </AppBar>
       {value === 0 && <TabItem><Hyperplane /></TabItem>}
