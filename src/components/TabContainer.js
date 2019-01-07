@@ -6,7 +6,8 @@ import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import Typography from '@material-ui/core/Typography'
 import Body from './Body'
-import Hyperplane from './Hyperplanes'
+import Hyperplanes from './Hyperplanes'
+import Errors from './Errors'
 
 const TabItem = ({ children }) => (
   <Typography component="div" style={{ padding: 8 * 3, minHeight: 500, }}>
@@ -34,9 +35,9 @@ function TabContainer({ classes }) {
           <Tab label='Error Graph' />
         </Tabs>
       </AppBar>
-      {value === 0 && <TabItem><Hyperplane /></TabItem>}
+      {value === 0 && <TabItem><Hyperplanes /></TabItem>}
       {value === 1 && <TabItem><Body /></TabItem>}
-      {value === 2 && <TabItem>Item Three</TabItem>}
+      {value === 2 && <TabItem><Errors /></TabItem>}
     </div>
   )
 }

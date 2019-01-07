@@ -45,7 +45,7 @@ const getPoints = (set, currentItem) => {
   return { classA, classB, currentPoint }
 }
 
-function Hyperplane() {
+function Hyperplanes() {
   const { state } = useContext(StoreContext)
   const lines = getLines(state.hyperplane, state.calculated.weights)
   const points = getPoints(state.trainingSet, state.calculated.index)
@@ -66,4 +66,4 @@ function Hyperplane() {
   )
 }
 
-export default Hyperplane
+export default Hyperplanes

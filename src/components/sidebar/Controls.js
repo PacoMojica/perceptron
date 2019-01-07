@@ -47,7 +47,10 @@ function Controls() {
     }))
     const { inputs, target } = newTrainingSet[index]
     const newError = util.calcError(target, state.calculated.output)
-    const newErrors = [ ...errors.slice(0, errors.length-1), newError]
+    const newErrors = [
+      ...errors.filter((e, index) => index !== errors.length-1),
+      newError
+    ]
     const newWeightDiff = util.calcWeightDiff(inputs, newError, learningRate)
 
     dispatch(actions.changeHyperplane(
