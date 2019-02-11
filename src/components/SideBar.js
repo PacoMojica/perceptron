@@ -18,9 +18,9 @@ function SideBar({ classes }) {
       >
         <div className={classes.toolbar} />
         <Divider />
-        <TrainingState />
-        <Divider />
         <Controls />
+        <Divider />
+        <TrainingState />
       </Drawer>
     </nav>
   )

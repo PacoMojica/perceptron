@@ -44,6 +44,11 @@ export const updateEpoch = actionCreator(
   'epoch'
 )
 
+export const changeCalculated = actionCreator(
+  actions.CHANGE_CALCULATED,
+  'calculated', 'trainingSet',
+)
+
 export const train = actionCreator(
   actions.TRAIN,
   'index', 'weights', 'products', 'weightedSum', 'weightDiff', 'output', 'errors', 'epoch'

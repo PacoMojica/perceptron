@@ -7,7 +7,7 @@ import { StoreContext } from '../../context/StoreContext'
 
 function Controls() {
   const { state, dispatch } = useContext(StoreContext)
-  const { learningRate } = state
+  const { learningRate, hyperplane } = state
   const { errors, index, weights, weightDiff, epoch } = state.calculated
   const setSize = state.trainingSet.length
 
@@ -60,11 +60,35 @@ function Controls() {
       newWeightDiff
     ))
   }
+
+  const changeTrainingSet = () => {
+    const newSet = util.generateSet(hyperplane)
+    const { inputs, target } = newSet[0]
+    const products = util.calcProducts(inputs, weights)
+    const weightedSum = util.calcWeightedSum(products)
+    const output = util.calcOutput(weightedSum)
+    const error = util.calcError(target, output)
+    const weightDiff = util.calcWeightDiff(inputs, error, learningRate)
+    
+    dispatch(actions.changeCalculated({
+        index: 0,
+        weights: weights,
+        products: products,
+        weightedSum: weightedSum,
+        weightDiff: weightDiff,
+        output: output,
+        errors: [error],
+        epoch: 0,
+      },
+      newSet
+    ))
+  }
   
   return (
     <List dense={true}>
       <Item value={'Train'} button={true} onClick={() => train()} />
       <Item value={'Change Base Hyperplane'} button={true} onClick={() => changeHyperplane()} />
+      <Item value={'Change Training Set'} button={true} onClick={() => changeTrainingSet()} />
     </List>
   )
 }

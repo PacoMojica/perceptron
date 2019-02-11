@@ -14,8 +14,17 @@ const changeHyperplane = (state, action) => ({
   trainingSet: action.trainingSet,
 })
 
+const changeCalculated = (state, action) => ({
+  ...state,
+  calculated: {
+    ...action.calculated,
+  },
+  trainingSet: action.trainingSet
+})
+
 export const stateHandler = {
   [actions.CHANGE_HYPERPLANE]: changeHyperplane,
+  [actions.CHANGE_CALCULATED]: changeCalculated,
 }
 
 /** 
@@ -42,9 +51,9 @@ const train = (state, action) => ({
   epoch: action.epoch,
 })
 
-
 export const calculatedHandler = {
   [actions.TRAIN]: train,
+  
 }
 
 /**
@@ -53,7 +62,6 @@ export const calculatedHandler = {
 export const trainigSetHandler = {
   [actions.CHANGE_TRAINING_SET]: (state, action) => action.trainigSet,
 }
-
 
 /**
  * Learning Rate Handlers
