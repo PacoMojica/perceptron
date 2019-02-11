@@ -18,6 +18,15 @@ export const stateHandler = {
   [actions.CHANGE_HYPERPLANE]: changeHyperplane,
 }
 
+/** 
+ * Tab Index Handlers
+ */
+const changeTabIndex = (state, action) => action.tabIndex
+
+export const tabIndexHandler = {
+  [actions.CHANGE_TAB_INDEX]: changeTabIndex,
+}
+
 /**
  * Calculated Handlers
  */

@@ -9,7 +9,7 @@ function Perceptron({ classes }) {
     <div className={classes.root}>
       <SideBar />
       <main className={classes.content}>
-      <div className={classes.toolbar} />
+        <div className={classes.toolbar} />
         <TabContainer />
       </main>
     </div>
@@ -26,7 +26,8 @@ const styles = theme => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing.unit * 3,
+    padding: theme.spacing.unit,
+    backgroundColor: theme.palette.background.default,
   },
   toolbar: theme.mixins.toolbar,  
 })

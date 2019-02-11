@@ -11,6 +11,11 @@ const actionCreator = (type, ...names) => (
   }
 )
 
+export const changeTabIndex = actionCreator(
+  actions.CHANGE_TAB_INDEX,
+  'tabIndex'
+)
+
 export const changeIndex = actionCreator(
   actions.CHANGE_INDEX,
   'index'

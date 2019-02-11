@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import { StoreContext } from '../context/StoreContext'
 import {
-  LineChart,
-  Line,
+  BarChart,
+  Bar,
   CartesianGrid,
   XAxis,
   YAxis,
@@ -12,7 +12,6 @@ import {
 
 function Errors() {
   const { state } = useContext(StoreContext)
-
   const { errors, epoch } = state.calculated
   const setSize = state.trainingSet.length
   const lines = errors
@@ -25,13 +24,13 @@ function Errors() {
 
   return (
     <ResponsiveContainer width='100%' height={500}>
-      <LineChart margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
+      <BarChart data={lines} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
         <Tooltip />
-        <Line name='error' data={lines} type="monotone" dataKey="y" />
-        <XAxis dataKey="x" type='number' domain={[0, 21]} allowDataOverflow={true} />
-        <YAxis dataKey='y' type='number' domain={[-1.5, 1.5]} allowDataOverflow={true} />
+        <Bar name='error' dataKey="y" fill="#8884d8" minPointSize={4} />
+        <XAxis dataKey="x" />
+        <YAxis />
         <CartesianGrid strokeDasharray="3 3" />
-      </LineChart>
+      </BarChart>
     </ResponsiveContainer>
   )
 }

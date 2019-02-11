@@ -99,6 +99,7 @@ export const initState = () => {
 
 
   return {
+    tabIndex: 0,
     calculated: {
       index: 0,
       weights: weights,
