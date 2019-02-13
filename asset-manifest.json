@@ -1,14 +1,14 @@
 {
-  "main.js": "/perceptron/static/js/main.f09da66c.chunk.js",
-  "main.js.map": "/perceptron/static/js/main.f09da66c.chunk.js.map",
-  "static/css/1.f99a09e8.chunk.css": "/perceptron/static/css/1.f99a09e8.chunk.css",
-  "static/js/1.6aeaee88.chunk.js": "/perceptron/static/js/1.6aeaee88.chunk.js",
-  "static/js/1.6aeaee88.chunk.js.map": "/perceptron/static/js/1.6aeaee88.chunk.js.map",
-  "runtime~main.js": "/perceptron/static/js/runtime~main.d4a8ca15.js",
-  "runtime~main.js.map": "/perceptron/static/js/runtime~main.d4a8ca15.js.map",
-  "static/media/index.css": "/perceptron/static/media/roboto-latin-900italic.bc833e72.woff",
-  "static/css/1.f99a09e8.chunk.css.map": "/perceptron/static/css/1.f99a09e8.chunk.css.map",
-  "index.html": "/perceptron/index.html",
-  "precache-manifest.1268f6316b5906b1c0a407d8c7a28af5.js": "/perceptron/precache-manifest.1268f6316b5906b1c0a407d8c7a28af5.js",
-  "service-worker.js": "/perceptron/service-worker.js"
+  "main.js": "/static/js/main.f09da66c.chunk.js",
+  "main.js.map": "/static/js/main.f09da66c.chunk.js.map",
+  "static/css/1.59228ee9.chunk.css": "/static/css/1.59228ee9.chunk.css",
+  "static/js/1.41398cb1.chunk.js": "/static/js/1.41398cb1.chunk.js",
+  "static/js/1.41398cb1.chunk.js.map": "/static/js/1.41398cb1.chunk.js.map",
+  "runtime~main.js": "/static/js/runtime~main.229c360f.js",
+  "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
+  "static/media/index.css": "/static/media/roboto-latin-900italic.bc833e72.woff",
+  "static/css/1.59228ee9.chunk.css.map": "/static/css/1.59228ee9.chunk.css.map",
+  "index.html": "/index.html",
+  "precache-manifest.92512fad78aabfde98f2432c40e7f2b6.js": "/precache-manifest.92512fad78aabfde98f2432c40e7f2b6.js",
+  "service-worker.js": "/service-worker.js"
 }
