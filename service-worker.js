@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/perceptron/precache-manifest.3e8ce794ec98d6fd801756a043874d6d.js"
+  "/perceptron/precache-manifest.1268f6316b5906b1c0a407d8c7a28af5.js"
 );
 
 workbox.clientsClaim();

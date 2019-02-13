@@ -1,14 +1,14 @@
 {
-  "main.js": "/perceptron/static/js/main.1149921e.chunk.js",
-  "main.js.map": "/perceptron/static/js/main.1149921e.chunk.js.map",
-  "static/css/1.27f42fae.chunk.css": "/perceptron/static/css/1.27f42fae.chunk.css",
-  "static/js/1.2ddadf85.chunk.js": "/perceptron/static/js/1.2ddadf85.chunk.js",
-  "static/js/1.2ddadf85.chunk.js.map": "/perceptron/static/js/1.2ddadf85.chunk.js.map",
+  "main.js": "/perceptron/static/js/main.f09da66c.chunk.js",
+  "main.js.map": "/perceptron/static/js/main.f09da66c.chunk.js.map",
+  "static/css/1.f99a09e8.chunk.css": "/perceptron/static/css/1.f99a09e8.chunk.css",
+  "static/js/1.6aeaee88.chunk.js": "/perceptron/static/js/1.6aeaee88.chunk.js",
+  "static/js/1.6aeaee88.chunk.js.map": "/perceptron/static/js/1.6aeaee88.chunk.js.map",
   "runtime~main.js": "/perceptron/static/js/runtime~main.d4a8ca15.js",
   "runtime~main.js.map": "/perceptron/static/js/runtime~main.d4a8ca15.js.map",
   "static/media/index.css": "/perceptron/static/media/roboto-latin-900italic.bc833e72.woff",
-  "static/css/1.27f42fae.chunk.css.map": "/perceptron/static/css/1.27f42fae.chunk.css.map",
+  "static/css/1.f99a09e8.chunk.css.map": "/perceptron/static/css/1.f99a09e8.chunk.css.map",
   "index.html": "/perceptron/index.html",
-  "precache-manifest.3e8ce794ec98d6fd801756a043874d6d.js": "/perceptron/precache-manifest.3e8ce794ec98d6fd801756a043874d6d.js",
+  "precache-manifest.1268f6316b5906b1c0a407d8c7a28af5.js": "/perceptron/precache-manifest.1268f6316b5906b1c0a407d8c7a28af5.js",
   "service-worker.js": "/perceptron/service-worker.js"
 }

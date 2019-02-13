@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "d704bb3d579b7d5e40880c75705c8a71",
-    "url": "/perceptron/static/media/roboto-latin-100italic.d704bb3d.woff"
+    "revision": "d69924b98acd849cdeba9fbff3f88ea6",
+    "url": "/perceptron/static/media/roboto-latin-300italic.d69924b9.woff2"
   },
   {
-    "revision": "1149921e8247b4a60b29",
-    "url": "/perceptron/static/js/main.1149921e.chunk.js"
+    "revision": "f09da66c091a5be8a448",
+    "url": "/perceptron/static/js/main.f09da66c.chunk.js"
   },
   {
     "revision": "bc833e725c137257c2c42a789845d82f",
@@ -40,6 +40,10 @@ self.__precacheManifest = [
     "url": "/perceptron/static/media/roboto-latin-900.19b7a0ad.woff2"
   },
   {
+    "revision": "d704bb3d579b7d5e40880c75705c8a71",
+    "url": "/perceptron/static/media/roboto-latin-100italic.d704bb3d.woff"
+  },
+  {
     "revision": "6232f43d15b0e7a0bf0fe82e295bdd06",
     "url": "/perceptron/static/media/roboto-latin-100italic.6232f43d.woff2"
   },
@@ -52,10 +56,6 @@ self.__precacheManifest = [
     "url": "/perceptron/static/media/roboto-latin-300.a1471d1d.woff"
   },
   {
-    "revision": "d69924b98acd849cdeba9fbff3f88ea6",
-    "url": "/perceptron/static/media/roboto-latin-300italic.d69924b9.woff2"
-  },
-  {
     "revision": "7b770d6c53423deb1a8e49d3c9175184",
     "url": "/perceptron/static/media/roboto-latin-900italic.7b770d6c.woff2"
   },
@@ -64,20 +64,20 @@ self.__precacheManifest = [
     "url": "/perceptron/static/media/roboto-latin-300italic.210a7c78.woff"
   },
   {
-    "revision": "d8bcbe724fd6f4ba44d0ee6a2675890f",
-    "url": "/perceptron/static/media/roboto-latin-400italic.d8bcbe72.woff2"
+    "revision": "bafb105baeb22d965c70fe52ba6b49d9",
+    "url": "/perceptron/static/media/roboto-latin-400.bafb105b.woff"
   },
   {
     "revision": "9680d5a0c32d2fd084e07bbc4c8b2923",
     "url": "/perceptron/static/media/roboto-latin-400italic.9680d5a0.woff"
   },
   {
-    "revision": "bafb105baeb22d965c70fe52ba6b49d9",
-    "url": "/perceptron/static/media/roboto-latin-400.bafb105b.woff"
-  },
-  {
     "revision": "de8b7431b74642e830af4d4f4b513ec9",
     "url": "/perceptron/static/media/roboto-latin-500.de8b7431.woff"
+  },
+  {
+    "revision": "d8bcbe724fd6f4ba44d0ee6a2675890f",
+    "url": "/perceptron/static/media/roboto-latin-400italic.d8bcbe72.woff2"
   },
   {
     "revision": "510dec37fa69fba39593e01a469ee018",
@@ -92,27 +92,27 @@ self.__precacheManifest = [
     "url": "/perceptron/static/media/roboto-latin-700.cf6613d1.woff"
   },
   {
-    "revision": "846d1890aee87fde5d8ced8eba360c3a",
-    "url": "/perceptron/static/media/roboto-latin-700italic.846d1890.woff"
-  },
-  {
     "revision": "010c1aeee3c6d1cbb1d5761d80353823",
     "url": "/perceptron/static/media/roboto-latin-700italic.010c1aee.woff2"
+  },
+  {
+    "revision": "846d1890aee87fde5d8ced8eba360c3a",
+    "url": "/perceptron/static/media/roboto-latin-700italic.846d1890.woff"
   },
   {
     "revision": "8c2ade503b34e31430d6c98aa29a52a3",
     "url": "/perceptron/static/media/roboto-latin-900.8c2ade50.woff"
   },
   {
-    "revision": "2ddadf850ec5e2bf04ac",
-    "url": "/perceptron/static/js/1.2ddadf85.chunk.js"
+    "revision": "6aeaee88ae8aac0a4cc1",
+    "url": "/perceptron/static/js/1.6aeaee88.chunk.js"
   },
   {
-    "revision": "2ddadf850ec5e2bf04ac",
-    "url": "/perceptron/static/css/1.27f42fae.chunk.css"
+    "revision": "6aeaee88ae8aac0a4cc1",
+    "url": "/perceptron/static/css/1.f99a09e8.chunk.css"
   },
   {
-    "revision": "cd06641c96d6dcf7a8b343334367b14a",
+    "revision": "3cfe366e89ecb220446939de8b5c506d",
     "url": "/perceptron/index.html"
   }
 ];
