@@ -1,13 +1,13 @@
 {
   "name": "perceptron",
-  "version": "0.1.0",
+  "version": "1.0",
   "private": true,
   "author": {
     "name": "pacomojica"
   },
-  "homepage": "https://pacomojica.github.io/perceptron/",
+  "homepage": "https://perceptron.arexinspace.com/",
   "dependencies": {
-    "@material-ui/core": "^3.7.1",
+    "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.1",
     "prop-types": "^15.6.2",
     "react": "^16.7.0-alpha.2",

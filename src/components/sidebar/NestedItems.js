@@ -10,7 +10,15 @@ import ExpandLess from '@material-ui/icons/ExpandLess'
 import ExpandMore from '@material-ui/icons/ExpandMore'
 import RemoveIcon from '@material-ui/icons/Remove'
 
-function NestedItems({ classes, children, title, Icon, startOpen }) {
+function NestedItems({
+    classes,
+    children,
+    title,
+    Icon,
+    startOpen,
+    handleMouseEnter,
+    handleMouseLeave,
+  }) {
   const [ open, setOpen ] = useState(startOpen)
   const handleClick = () => {
     setOpen(!open)
@@ -18,14 +26,26 @@ function NestedItems({ classes, children, title, Icon, startOpen }) {
 
   return (
     <div>
-      <ListItem button className={classes.parent } onClick={handleClick}>
+      <ListItem
+        button
+        className={classes.parent}
+        onClick={handleClick}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <ListItemIcon>
           <Icon />
         </ListItemIcon>
         <ListItemText primary={title}/>
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
-      <Collapse in={open} timeout='auto' unmountOnExit>
+      <Collapse
+        in={open}
+        timeout='auto'
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        unmountOnExit
+      >
         <List component='div' disablePadding>
           {children.map(child =>
             React.cloneElement(child, { nested: true })

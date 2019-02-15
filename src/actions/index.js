@@ -46,10 +46,33 @@ export const updateEpoch = actionCreator(
 
 export const changeCalculated = actionCreator(
   actions.CHANGE_CALCULATED,
-  'calculated', 'trainingSet',
+  'calculated',
+  'trainingSet',
 )
 
 export const train = actionCreator(
   actions.TRAIN,
-  'index', 'weights', 'products', 'weightedSum', 'weightDiff', 'output', 'errors', 'epoch'
+  'index',
+  'weights',
+  'products',
+  'weightedSum',
+  'weightDiff',
+  'output',
+  'errors',
+  'epoch'
+)
+
+export const changeSnackbar = actionCreator(
+  actions.CHANGE_SNACKBAR,
+  'snackbar'
+)
+
+export const toggleSnackbar = actionCreator(
+  actions.TOGGLE_SNACKBAR,
+  'open'
+)
+
+export const toggleShowNext = actionCreator(
+  actions.TOGGLE_SHOW_NEXT,
+  'showNext'
 )

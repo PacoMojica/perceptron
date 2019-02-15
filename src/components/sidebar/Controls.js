@@ -62,7 +62,7 @@ function Controls() {
   }
 
   const changeTrainingSet = () => {
-    const newSet = util.generateSet(hyperplane)
+    const newSet = util.generateSet(hyperplane, setSize)
     const { inputs, target } = newSet[0]
     const products = util.calcProducts(inputs, weights)
     const weightedSum = util.calcWeightedSum(products)

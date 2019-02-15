@@ -24,17 +24,20 @@ const getLines = (base, perceptron) => {
   ]
 }
 
-const getPoints = (set, currentItem) => {
+const getPoints = (set, currentItem, nextItem, showNext) => {
   let classA = []
   let classB = []
   let currentPoint = []
-
+  let nextPoint = []
+  
   for(let i = 0; i < set.length; i++) {
     const { inputs: [x, y], target } = set[i]
     const point = {x: x, y: y, z: 1}
     
     if(i === currentItem) {
       currentPoint.push(point)
+    } else if(showNext && i === nextItem) {
+      nextPoint.push(point)
     } else if(target === 0) {
       classA.push(point)
     } else {
@@ -42,13 +45,19 @@ const getPoints = (set, currentItem) => {
     }
   }
 
-  return { classA, classB, currentPoint }
+  return { classA, classB, currentPoint, nextPoint }
 }
 
 function Hyperplanes() {
   const { state } = useContext(StoreContext)
-  const lines = getLines(state.hyperplane, state.calculated.weights)
-  const points = getPoints(state.trainingSet, state.calculated.index)
+  const { calculated: {weights, index}, trainingSet, showNext} = state
+  const lines = getLines(state.hyperplane, weights)
+  const points = getPoints(
+    trainingSet,
+    index,
+    (index + 1) % trainingSet.length,
+    showNext
+  )
 
   return (
     <ResponsiveContainer width='100%' height={500}>
@@ -57,7 +66,8 @@ function Hyperplanes() {
         <Line name='perceptron' yAxisId='0' data={lines} type="monotone" dataKey="yp" stroke="blue" />
         <Line name='class a' yAxisId='0' data={points.classA} dataKey='y' isAnimationActive={false} stroke="transparent" dot={{fill: 'black'}} />
         <Line name='class b' yAxisId='0' data={points.classB} dataKey='y' isAnimationActive={false} stroke="transparent" dot={{fill: 'red'}} />
-        <Line name='current' yAxisId='0' data={points.currentPoint} dataKey='y' isAnimationActive={false} stroke="transparent" dot={{fill: '#818181', r: 8}} />
+        <Line name='current' yAxisId='0' data={points.currentPoint} dataKey='y' isAnimationActive={false} stroke="transparent" dot={{fill: '#818181', r: 9}} />
+        <Line name='next' yAxisId='0' hide={!showNext} data={points.nextPoint} dataKey='y' isAnimationActive={false} stroke="gray" dot={{fill: '#ead42e', r: 9}} />
         <XAxis dataKey="x" type='number' domain={[0, 10]} allowDataOverflow={true} />
         <YAxis yAxisId='0' dataKey='y' type='number' domain={[0, 10]} allowDataOverflow={true} />
         <CartesianGrid strokeDasharray="3 3" />

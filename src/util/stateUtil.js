@@ -11,7 +11,7 @@ export const randomArray = (size = 3, start = -1, end = 1) => (
   )
 )
 
-const randomCoord = () => (Math.random() * 9)
+const randomCoord = () => (Math.random() * 10)
 
 export const inSet = (x, y, [a, b, c]) => (y >= (
   (-1 * c) - (x * a)) / b
@@ -100,6 +100,14 @@ export const initState = () => {
 
   return {
     tabIndex: 0,
+    snackbar: {
+      open: false,
+      info: {
+        message: '',
+        key: '',
+      },
+    },
+    showNext: false,
     calculated: {
       index: 0,
       weights: weights,
