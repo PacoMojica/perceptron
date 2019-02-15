@@ -40,6 +40,7 @@ function TopBar({ classes }) {
           <Tab label='Hyperplanes' />
           <Tab label='Inputs & Weigths' />
           <Tab label='Error Graph' />
+          <Tab label='About' />
         </Tabs>
       </ToolBar>
     </AppBar>

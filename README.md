@@ -1,4 +1,4 @@
-# Perceptron
+# [Perceptron](https://perceptron.arexinspace.com/)
 
 I created this react app to play with a perceptron, changing the learning rate, the training set, etc and visualizing the neuron while you train it.
 
@@ -9,17 +9,17 @@ A perceptron is a linear threshold gate or binary classifier which can decide wh
 The threshold function or linear classifier is a function that maps its inputs to a single binary value. This splits a high-dimensional input space with a hyperplane: all points on one side of the hyperplane are classified as "yes", while the others are classified as "no". In the case of two dimensions the hyperplane is a line that divides the plane in two sides.
 
 
-![Threshold function](img/thresholdFunction.png)
+![Threshold function](https://raw.githubusercontent.com/PacoMojica/perceptron/master/img/thresholdFunction.png)
 
 The linear threshold gate, also known as McCulloch-Pitts neural model, models the strength of connections using weights and the threshold phenomenon, a value below the threshold produces no output. The input of the threshold function is the dot product between input feature vector and weights.
 
-![Threshold gate](img/thresholdGate.png)
+![Threshold gate](https://raw.githubusercontent.com/PacoMojica/perceptron/master/img/thresholdGate.png)
 
 The perceptron algorithm introduced the idea of training, if a problem is linearly separable, a single perceptron can find the weights that define the separating hyperplane. In the training proccess, weight updates occur only when the error is greater than zero.
 
 # About the app
 
-When the app is started, an array of 20 random inputs is created, to decide if an input belongs to a class, a base hyperplane is created, in this case a line defined by three parameters.
+When [the app](https://perceptron.arexinspace.com/) is started, an array of 20 random inputs is created, to decide if an input belongs to a class, a base hyperplane is created, in this case a line defined by three parameters.
 
 The sidebar contains buttons to train, change the training set and change the base hyperplane. The bottom part contains information about the training state.
 

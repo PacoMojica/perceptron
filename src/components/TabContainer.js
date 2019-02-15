@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography'
 import Body from './Body'
 import Hyperplanes from './Hyperplanes'
 import Errors from './Errors'
+import About from './About'
 import { StoreContext } from '../context/StoreContext'
 
 const TabItem = ({ children }) => (
@@ -25,6 +26,7 @@ function TabContainer({ classes }) {
       {state.tabIndex === 0 && <TabItem><Hyperplanes /></TabItem>}
       {state.tabIndex === 1 && <TabItem><Body /></TabItem>}
       {state.tabIndex === 2 && <TabItem><Errors /></TabItem>}
+      {state.tabIndex === 3 && <TabItem><About /></TabItem>}
     </div>
   )
 }
