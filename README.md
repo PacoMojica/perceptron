@@ -6,7 +6,7 @@ I created this react app to play with a perceptron, changing the learning rate, 
 
 A perceptron is a linear threshold gate or binary classifier which can decide whether an input belongs to a certain set or not.
 
-The threshold function or linear classifier is a function that maps its inputs to a single binary value. This splits a high-dimensional input space with a hyperplane: all points on one side of the hyperplane are classified as "yes", while the others are classified as "no". In the case of a two dimensions the hyperplane is a line that divides the plane in two sides.
+The threshold function or linear classifier is a function that maps its inputs to a single binary value. This splits a high-dimensional input space with a hyperplane: all points on one side of the hyperplane are classified as "yes", while the others are classified as "no". In the case of two dimensions the hyperplane is a line that divides the plane in two sides.
 
 
 ![Threshold function](img/thresholdFunction.png)
