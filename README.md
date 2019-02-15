@@ -1,6 +1,6 @@
-# [Perceptron](https://perceptron.arexinspace.com/)
+# Perceptron
 
-I created this react app to play with a perceptron, changing the learning rate, the training set, etc and visualizing the neuron while you train it.
+I created [this react app](https://perceptron.arexinspace.com/) to play with a perceptron, changing the learning rate, the training set, etc and visualizing the neuron while you train it.
 
 # About the perceptron
 
@@ -30,3 +30,5 @@ In the top bar you can change the view to:
 - The hyperplanes, the green line is the 'base hyperplane' and the blue line is the one defined by the perceptron.
 - The inputs and weights, here you can see the inputs, the weights, the products, the bias, etc.
 - The error graph, it shows the error for each input vector passed to the perceptron
+
+[View on GitHub](https://github.com/PacoMojica/perceptron)
