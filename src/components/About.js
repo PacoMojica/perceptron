@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown'
 function About() {
   const text = `# Perceptron
 
-I created [this react app](https://perceptron.arexinspace.com/) to play with a perceptron, changing the learning rate, the training set, etc and visualizing the neuron while you train it.
+I created [this react app](https://pacomojica.github.io/perceptron/) to play with a perceptron, changing the learning rate, the training set, etc and visualizing the neuron while you train it.
 
 
 # About the perceptron
