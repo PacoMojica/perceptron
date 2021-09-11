@@ -1,12 +1,12 @@
 const DEFAULT_SIZE = 20
 
 const normalizedValue = (min, max) => (
-  Math.random() * (max - min ) + min
+  Math.random() * (max - min) + min
 )
 
 export const randomArray = (size = 3, start = -1, end = 1) => (
   Array.from(
-    {length: size},
+    { length: size },
     () => normalizedValue(start, end)
   )
 )
@@ -15,14 +15,14 @@ const randomCoord = () => (Math.random() * 10)
 
 export const inSet = (x, y, [a, b, c]) => (y >= (
   (-1 * c) - (x * a)) / b
-    ? 1 //true
-    : 0 //false
+  ? 1 //true
+  : 0 //false
 )
 
 export const generateSet = (hyperplane, size = DEFAULT_SIZE) => {
   let set = []
-  
-  for(let i = 0; i < size; i++) {
+
+  for (let i = 0; i < size; i++) {
     let x = randomCoord()
     let y = randomCoord()
     let target = inSet(x, y, hyperplane)
@@ -39,7 +39,7 @@ export const generateSet = (hyperplane, size = DEFAULT_SIZE) => {
 export const calcProducts = (x, y) => {
   let products = []
 
-  for(let i = 0; i < 3; i++) {
+  for (let i = 0; i < 3; i++) {
     products.push(x[i] * y[i])
   }
 
@@ -59,12 +59,12 @@ export const calcError = (target, output) => (
 )
 
 export const calcWeightDiff = (inputs, error, learningRate) => {
-  if(error === 0)
+  if (error === 0)
     return [0, 0, 0]
 
   let weightDiff = []
 
-  for(let i = 0; i < 3; i++) {
+  for (let i = 0; i < 3; i++) {
     weightDiff.push(
       learningRate * error * inputs[i]
     )
@@ -76,12 +76,12 @@ export const calcWeightDiff = (inputs, error, learningRate) => {
 export const calcNewWeights = (weights, weightDiff) => {
   let newWeights = []
 
-  for(let i = 0; i < 3; i++) {
+  for (let i = 0; i < 3; i++) {
     newWeights.push(
       weights[i] + weightDiff[i]
     )
   }
-  
+
   return newWeights
 }
 

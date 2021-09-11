@@ -60,7 +60,7 @@ function Hyperplanes() {
   )
 
   return (
-    <ResponsiveContainer width='100%' height={500}>
+    <ResponsiveContainer width='100%' height={700}>
       <LineChart margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
         <Line name='base' yAxisId='0' data={lines} type="monotone" dataKey="y" stroke="green" />
         <Line name='perceptron' yAxisId='0' data={lines} type="monotone" dataKey="yp" stroke="blue" />
