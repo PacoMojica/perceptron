@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import List from '@material-ui/core/List'
 import Item from './Item'
 import * as util from '../../util/stateUtil'
@@ -6,6 +6,7 @@ import * as actions from '../../actions/index'
 import { StoreContext } from '../../context/StoreContext'
 
 function Controls() {
+  const [isTraining, setIsTraining] = useState(false);
   const { state, dispatch } = useContext(StoreContext)
   const { learningRate, hyperplane } = state
   const { errors, index, weights, weightDiff, epoch } = state.calculated
@@ -20,7 +21,7 @@ function Controls() {
     const weightedSum = util.calcWeightedSum(products)
     const output = util.calcOutput(weightedSum)
     const newError = util.calcError(target, output)
-    const newErrors = [...errors, newError]
+    const newErrors = [...errors, newError];
     const newWeightDiff = util.calcWeightDiff(inputs, newError, learningRate)
     
     dispatch(actions.train(
@@ -33,7 +34,7 @@ function Controls() {
       newErrors,
       nextEpoch,
     ))
-  }
+  };
 
   const changeHyperplane = () => {
     const newHyperplane = util.randomArray()
@@ -83,12 +84,35 @@ function Controls() {
       newSet
     ))
   }
+
+  useEffect(() => {
+    const hasCheckedAllItems = errors.length >= setSize;
+    const lastItems = index === 0 ? setSize : index;
+    const currentErrors = hasCheckedAllItems ? errors.slice(lastItems * -1) : errors;
+    const hasErrors = currentErrors.some(e => e !== 0);
+
+    if (
+      isTraining && (
+        !hasCheckedAllItems ||
+        (hasCheckedAllItems && hasErrors)
+      )
+    ) {
+      const interval = setInterval(train, 1000);
+
+      return () => {
+        clearInterval(interval);
+      };
+    } else {
+      setIsTraining(false);
+    }
+
+  }, [isTraining, train, errors, setSize]);
   
   return (
     <List dense={true}>
-      <Item value={'Train'} button={true} onClick={() => train()} />
-      <Item value={'Change Base Hyperplane'} button={true} onClick={() => changeHyperplane()} />
-      <Item value={'Change Training Set'} button={true} onClick={() => changeTrainingSet()} />
+      <Item value={isTraining ? 'Stop Training' : 'Start Training'} button={true} onClick={() => setIsTraining(!isTraining)} />
+      <Item value={'Change Base Hyperplane'} button={true} onClick={changeHyperplane} />
+      <Item value={'Change Training Set'} button={true} onClick={changeTrainingSet} />
     </List>
   )
 }

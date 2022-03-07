@@ -11,10 +11,10 @@ export const randomArray = (size = 3, start = -1, end = 1) => (
   )
 )
 
-const randomCoord = () => (Math.random() * 10)
-
-export const inSet = (x, y, [a, b, c]) => (y >= (
-  (-1 * c) - (x * a)) / b
+// y = (c - ax) / b
+export const inSet = (x, y, [a, b, c]) => (
+  // y >= ((-1 * c) - (x * a)) / b
+  y >= (c - a * x) / b
   ? 1 //true
   : 0 //false
 )
@@ -23,8 +23,8 @@ export const generateSet = (hyperplane, size = DEFAULT_SIZE) => {
   let set = []
 
   for (let i = 0; i < size; i++) {
-    let x = randomCoord()
-    let y = randomCoord()
+    let x = normalizedValue(-10, 10)
+    let y = normalizedValue(-10, 10)
     let target = inSet(x, y, hyperplane)
 
     set.push({
