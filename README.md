@@ -2,6 +2,8 @@
 
 I created this app to play with a perceptron, changing the learning rate, the training set, etc and visualizing the neuron while you train it.
 
+[View Live](https://pacomojica.github.io/perceptron/)
+
 # About the perceptron
 
 A perceptron is a linear threshold gate or binary classifier which can decide whether an input belongs to a certain set or not.
